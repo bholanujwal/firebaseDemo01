@@ -1,55 +1,20 @@
-import { useState, useEffect } from 'react'
 import './App.css'
-import { messaging } from './firebase'
-import { getToken } from 'firebase/messaging'
+import { Routes, Route } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register';
 
-function App() {
+const App = () => {
+    return (
+        <div>
+            <Routes>
+                <Route path='/' element={<h1>Home</h1>} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/dashboard' element={<h1>This is Dashboard page</h1>} />
 
-  // ask user for notification permission
-  async function requestPremission() {
-    const permission = await Notification.requestPermission();
+            </Routes>
+        </div>
+    );
+};
 
-    if (permission === 'granted') {
-      // generate token/
-      const token = await getToken(messaging, {
-        vapidKey:
-          'BDqMLKNPz0Zo4jDAu0ztLztx3pCkRjKj5SX_atP0it-vEBskoSv7LKucmIdcMhmYGwpfQaWSzCirsDW0hCjeR7o'
-      });
-
-      // console.log('generated tokrn', token);
-    } else if (permission === 'denied') {
-      alert('you denied for permission');
-    }
-  }
-
-  useEffect(() => {
-    requestPremission()
-  }, [])
-
-
-  function handleForm(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const formObj = Object.fromEntries(formData.entries());
-    console.log(formObj);
-  }
-
-  return (
-    <>
-      <h1>Firebase</h1>
-      <form onSubmit={handleForm}>
-        <label htmlFor="book">Book Name</label>
-        <input type="text" id="book" name="book" />
-
-        <label htmlFor="genera">Genera</label>
-        <input type="text" id="genera" name="genera" />
-
-        <button type="submit">Send</button>
-      </form>
-    </>
-  )
-}
-
-export default App
+export default App;
