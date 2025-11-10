@@ -26,9 +26,28 @@ function App() {
     requestPremission()
   }, [])
 
+
+  function handleForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const formObj = Object.fromEntries(formData.entries());
+    console.log(formObj);
+  }
+
   return (
     <>
-     <h1>hello</h1>
+      <h1>Firebase</h1>
+      <form onSubmit={handleForm}>
+        <label htmlFor="book">Book Name</label>
+        <input type="text" id="book" name="book" />
+
+        <label htmlFor="genera">Genera</label>
+        <input type="text" id="genera" name="genera" />
+
+        <button type="submit">Send</button>
+      </form>
     </>
   )
 }
