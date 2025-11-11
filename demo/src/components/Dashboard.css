@@ -1,0 +1,279 @@
+/* Dashboard.css */
+
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7fa;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header h1 {
+    font-size: 1.8rem;
+    color: #0ea5e9;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: #374151;
+    text-decoration: none;
+    padding: 12px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: #e0f2fe;
+    color: #0ea5e9;
+    font-weight: bold;
+}
+
+.logout-button {
+    margin-top: auto;
+    /* pushes it to bottom of sidebar */
+    padding: 10px 15px;
+    background-color: #ef4444;
+    /* red */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: #dc2626;
+    /* darker red on hover */
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+/* Overview Summary */
+.overview-summary {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.summary-title {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.summary-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0ea5e9;
+}
+
+/* Tanks Grid */
+.tanks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tank-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tank-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.tank-level-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #e5e7eb;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.tank-level-fill {
+    height: 100%;
+    border-radius: 6px;
+}
+
+.tank-level-fill.normal {
+    background-color: #22c55e;
+}
+
+.tank-level-fill.medium {
+    background-color: #facc15;
+}
+
+.tank-level-fill.low {
+    background-color: #ef4444;
+}
+
+.last-updated {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.pump-button {
+    background-color: #0ea5e9;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.pump-button:hover {
+    background-color: #0284c7;
+}
+
+/* Add Tank Button */
+.add-tank-container {
+    text-align: center;
+}
+
+.add-tank-button {
+    background-color: #22c55e;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.add-tank-button:hover {
+    background-color: #16a34a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .left-sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .summary-card {
+        padding: 15px;
+    }
+}
+
+/* Alerts Page Styling */
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.alert-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.alert-message {
+    font-weight: 600;
+    color: #111827;
+}
+
+.alert-time {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Alert types */
+.alert-card.critical {
+    border-left: 6px solid #ef4444;
+    /* red */
+}
+
+.alert-card.warning {
+    border-left: 6px solid #facc15;
+    /* yellow */
+}
+
+.alert-card.resolved {
+    border-left: 6px solid #22c55e;
+    /* green */
+    opacity: 0.7;
+}
+
+/* Resolve Button */
+.resolve-button {
+    padding: 6px 12px;
+    background-color: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.resolve-button:hover {
+    background-color: #0284c7;
+}
