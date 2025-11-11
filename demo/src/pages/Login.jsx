@@ -1,19 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
 import { useFirebase } from "../context/firebase";
 
 function Login() {
     const firebase = useFirebase();
-    console.log(firebase.isLoggedIn)
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (firebase.isLoggedIn) {
-            navigate("/dashboard");
-        }
-
-    }, [firebase.isLoggedIn, navigate]);
-
 
     const [formData, setFormData] = useState({
         email: "",
